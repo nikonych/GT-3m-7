@@ -12,7 +12,7 @@ import com.example.gt_3m_7.databinding.FragmentMainBinding
 class DetailFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailBinding
-
+    private lateinit var navArgs: DetailFragmentArgs
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +25,10 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val user = arguments?.getSerializable(MainFragment.KEY_FOR_USER) as User
+        arguments?.let {
+            navArgs = DetailFragmentArgs.fromBundle(it)
+        }
+        val user = navArgs.user as User
         binding.apply {
             tvName.text = user.name
             tvStatus.text = user.status

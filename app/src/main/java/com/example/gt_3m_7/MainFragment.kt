@@ -52,6 +52,6 @@ class MainFragment : Fragment() {
     }
 
     private fun onClick(position: Int){
-        findNavController().navigate(R.id.detailFragment, bundleOf(KEY_FOR_USER to RickList[position]))
+        findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(RickList[position]))
     }
 }
